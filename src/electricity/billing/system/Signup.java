@@ -82,11 +82,33 @@ public class Signup extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae)
     {
-        if(ae.getSource()==back)
+         if(ae.getSource()==create)
         {
-            setVisible(false);
-            new Login();
-        }
+            String accountType= accType.getSelectedItem();
+            String Username=username.getText();
+            String Name=name.getText();
+            String meterNum=meterNo.getText();
+            String Password=passwrd.getText();
+
+            try{
+               Conn c=new Conn();
+                String query="insert into signup values('"+meterNum+"','"+Username+"','"+Password+"','"+Name+"','"+accountType+"')";
+                c.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null,"Account Created Successfully");
+                setVisible(false);
+                 new Login();
+            }
+          catch (Exception e)
+           {
+               e.printStackTrace();
+           }
+
+
+        } else if(ae.getSource()==back)
+    {
+        setVisible(false);
+        new Login();
+    }
     }
     public static void main(String[] args) {
 
