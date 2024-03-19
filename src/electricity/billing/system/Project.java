@@ -44,7 +44,7 @@ public class Project extends JFrame {
         JMenuItem customerdetails=new JMenuItem("Customer Details");
         customerdetails.setFont(new Font("monospaced",Font.PLAIN,12));
         customerdetails.setBackground(Color.WHITE);
-        ImageIcon icon2=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon2=new ImageIcon(ClassLoader.getSystemResource("icons/customer.png"));
         Image image2=icon2.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         customerdetails.setIcon((new ImageIcon(image2)));
         //SETS shortcuts
@@ -55,7 +55,7 @@ public class Project extends JFrame {
         JMenuItem depositdetails=new JMenuItem("Deposit Details");
         depositdetails.setFont(new Font("monospaced",Font.PLAIN,12));
         depositdetails.setBackground(Color.WHITE);
-        ImageIcon icon3=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon3=new ImageIcon(ClassLoader.getSystemResource("icons/deposit.png"));
         Image image3=icon3.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         depositdetails.setIcon((new ImageIcon(image3)));
         //SETS shortcuts
@@ -67,7 +67,7 @@ public class Project extends JFrame {
         JMenuItem calculatebill=new JMenuItem("Calculate Bill");
         calculatebill.setFont(new Font("monospaced",Font.PLAIN,12));
         calculatebill.setBackground(Color.WHITE);
-        ImageIcon icon4=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon4=new ImageIcon(ClassLoader.getSystemResource("icons/calculate.png"));
         Image image4=icon4.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         calculatebill.setIcon((new ImageIcon(image4)));
         //SETS shortcuts
@@ -85,7 +85,7 @@ public class Project extends JFrame {
         JMenuItem updateInfo=new JMenuItem("Update Information");
         updateInfo.setFont(new Font("monospaced",Font.PLAIN,12));
         updateInfo.setBackground(Color.WHITE);
-        ImageIcon icon5=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon5=new ImageIcon(ClassLoader.getSystemResource("icons/update.png"));
         Image image5=icon5.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         updateInfo.setIcon((new ImageIcon(image5)));
         //SETS shortcuts
@@ -96,7 +96,7 @@ public class Project extends JFrame {
         JMenuItem viewInfo=new JMenuItem("View Information");
         viewInfo.setFont(new Font("monospaced",Font.PLAIN,12));
         viewInfo.setBackground(Color.WHITE);
-        ImageIcon icon6=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon6=new ImageIcon(ClassLoader.getSystemResource("icons/view.png"));
         Image image6=icon6.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         viewInfo.setIcon((new ImageIcon(image6)));
         //SETS shortcuts
@@ -114,7 +114,7 @@ public class Project extends JFrame {
         JMenuItem paybill=new JMenuItem("Pay Bill");
         paybill.setFont(new Font("monospaced",Font.PLAIN,12));
         paybill.setBackground(Color.WHITE);
-        ImageIcon icon7=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon7=new ImageIcon(ClassLoader.getSystemResource("icons/paybill.png"));
         Image image7=icon7.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         paybill.setIcon((new ImageIcon(image7)));
         //SETS shortcuts
@@ -125,7 +125,7 @@ public class Project extends JFrame {
         JMenuItem billdetails=new JMenuItem("Bill Details");
         billdetails.setFont(new Font("monospaced",Font.PLAIN,12));
         billdetails.setBackground(Color.WHITE);
-        ImageIcon icon8=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon8=new ImageIcon(ClassLoader.getSystemResource("icons/bill.png"));
         Image image8=icon8.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         billdetails.setIcon((new ImageIcon(image8)));
         //SETS shortcuts
@@ -142,7 +142,7 @@ public class Project extends JFrame {
         JMenuItem generatebill=new JMenuItem("Generate Bill");
         generatebill.setFont(new Font("monospaced",Font.PLAIN,12));
         generatebill.setBackground(Color.WHITE);
-        ImageIcon icon9=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon9=new ImageIcon(ClassLoader.getSystemResource("icons/generate.png"));
         Image image9=icon9.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         generatebill.setIcon((new ImageIcon(image9)));
         //SETS shortcuts
@@ -158,7 +158,7 @@ public class Project extends JFrame {
         JMenuItem notepad=new JMenuItem("Generate Bill");
         notepad.setFont(new Font("monospaced",Font.PLAIN,12));
         notepad.setBackground(Color.WHITE);
-        ImageIcon icon10=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon10=new ImageIcon(ClassLoader.getSystemResource("icons/bk.jpg"));
         Image image10=icon10.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         notepad.setIcon((new ImageIcon(image10)));
         //SETS shortcuts
@@ -169,7 +169,7 @@ public class Project extends JFrame {
         JMenuItem calculator=new JMenuItem("Calculator");
         calculator.setFont(new Font("monospaced",Font.PLAIN,12));
         calculator.setBackground(Color.WHITE);
-        ImageIcon icon11=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon11=new ImageIcon(ClassLoader.getSystemResource("icons/calculator.png"));
         Image image11=icon11.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         calculator.setIcon((new ImageIcon(image11)));
         //SETS shortcuts
@@ -186,7 +186,7 @@ public class Project extends JFrame {
         JMenuItem exit1=new JMenuItem("Exit");
         exit1.setFont(new Font("monospaced",Font.PLAIN,12));
         exit1.setBackground(Color.WHITE);
-        ImageIcon icon12=new ImageIcon(ClassLoader.getSystemResource("icons/bk.png"));
+        ImageIcon icon12=new ImageIcon(ClassLoader.getSystemResource("icons/exit.png"));
         Image image12=icon12.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
         exit1.setIcon((new ImageIcon(image12)));
         //SETS shortcuts
