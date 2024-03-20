@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class Conn {
 Connection c;
 Statement s;
-     Conn()
+     public Conn()
     {
         try
         {
