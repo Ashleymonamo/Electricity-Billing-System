@@ -16,6 +16,7 @@ Thread t;
         setTitle("Landing Page");
         setVisible(true);
 
+
         for (int i = 1; i< 550 ; i++) {
             setSize(i,  i);
             setLocation(300,70);

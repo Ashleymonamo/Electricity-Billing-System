@@ -9,7 +9,7 @@ import javax.sql.*;
 public class Login extends JFrame implements ActionListener{
     JLabel lblpassword,lblloginOpt,lbluserName;
     Button login,cancel,signup;
-    JTextField username,passwrd;
+    JTextField email,passwrd;
     Choice loginOpt;
 Login()
 {
@@ -17,7 +17,7 @@ Login()
        getContentPane().setBackground(Color.WHITE);
       setLayout(null);
 
-    lbluserName=new JLabel("Username");
+    lbluserName=new JLabel("Email");
     lbluserName.setBounds(250,100,80,30);
     add(lbluserName);
 
@@ -29,9 +29,9 @@ Login()
     lblloginOpt.setBounds(250,180,80,30);
     add(lblloginOpt);
 
-    username=new JTextField();
-    username.setBounds(350,100,150,30);
-    add(username);
+    email=new JTextField();
+    email.setBounds(350,100,150,30);
+    add(email);
 
     passwrd=new JTextField();
     passwrd.setBounds(350,140,150,30);
@@ -78,36 +78,40 @@ Login()
 public void actionPerfomed(ActionEvent ae)
 {
    if (ae.getSource()==login)
-    { String accountType= loginOpt.getSelectedItem();
-        String Username=username.getText();
-        String passsWord=passwrd.getText();
-
-        try
-        {
-Conn c= new Conn();
-String query="select * from signup where username= '"+Username+"'and password='"+passsWord+"' and accType='"+accountType+"'";
-ResultSet rs= c.s.executeQuery(query);
-if(rs.next())
-{
-setVisible(false);
-new Project();
-}else
-{
-    JOptionPane.showMessageDialog(null,"Invalid Login");
-
-}
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-      // setVisible(false);
+   {
+//    { String accountType= loginOpt.getSelectedItem();
+//        String Username=username.getText();
+//        String passsWord=passwrd.getText();
+//
+//        try
+//        {
+//Conn c= new Conn();
+//String query="select * from login where username= '"+Username+"'and password='"+passsWord+"' and accType='"+accountType+"'";
+//ResultSet rs= c.s.executeQuery(query);
+//if(rs.next())
+//{
+//setVisible(false);
+//new Project();
+//}
+//else
+//{
+//    JOptionPane.showMessageDialog(null,"Invalid Login Credentials");
+//
+//}
+//        }catch(Exception e)
+//        {
+//            e.printStackTrace();
+//        }
+//      // setVisible(false);
     }
     else if (ae.getSource()==signup)
     {
        //
+        new Signup();
     }
     else if (ae.getSource()==cancel)
      {
+
          //setVisible(false);
      }
 
@@ -123,7 +127,34 @@ new Project();
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource()==login)
         {
-             setVisible(false);
+
+            String accountType= loginOpt.getSelectedItem();
+            String emailAdress=email.getText();
+            String passsWord=passwrd.getText();
+
+            try
+            {
+                Conn c= new Conn();
+                String query="select * from login where email= '"+emailAdress+"'and password='"+passsWord+"' and accType='"+accountType+"'";
+                ResultSet rs= c.s.executeQuery(query);
+                if(rs.next())
+                {
+                    setVisible(false);
+                    new Project();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"Invalid Login Credentials");
+                    setVisible(false);
+                    new Login();
+
+                }
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+
+
         }
         else if (ae.getSource()==signup)
         {

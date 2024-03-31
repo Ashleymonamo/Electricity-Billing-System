@@ -6,13 +6,14 @@ import java.awt.event.*;
 import java.util.*;
 import  java.sql.*;
 
-public class MeterInfo extends JFrame  {
+public class MeterInfo extends JFrame  implements ActionListener{
 
-    JTextField nametxt,emailtxt,citytxt,phonetxt;
-    Button next,cancel;
-    JLabel lblname,lblMeter,lblMeter2,lblemail,lblcity,lblphone;
 
-    MeterInfo()
+    Button submit;
+    JLabel lblMeter,lblMeter2,lblmeterlocation,lblmetertype,lblphaseCode,lblbillType;
+    Choice meterlocation,meterType,phaseType,billType;
+
+    MeterInfo( String meterNo)
     {
         setSize(550,  550);
         setLocation(300,70);
@@ -29,59 +30,110 @@ public class MeterInfo extends JFrame  {
         p.add(heading);
 
 
-        lblMeter=new JLabel("Meter Number");
-        lblMeter.setBounds(100,80,100,30);
-        p.add(lblMeter);
-        nametxt=new JTextField();
-        nametxt.setBounds(210,80,150,30);
-        p.add(nametxt);
+
 
         lblMeter=new JLabel("Meter No");
         lblMeter.setBounds(100,120,100,30);
         p.add(lblMeter);
-        Random ran=new Random();
-        long number =ran.nextLong()%10000000;
-        lblMeter2=new JLabel();
+
+//        Random ran=new Random();
+//        long number =ran.nextLong()%10000000;
+        lblMeter2=new JLabel(meterNo);
         lblMeter2.setBounds(210,120,150,30);
-        lblMeter2.setText(""+Math.abs(number));
+       // lblMeter2.setText(""+Math.abs(number));
         p.add(lblMeter2);
 
-        lblemail=new JLabel("Email Adress");
-        lblemail.setBounds(100,160,100,30);
-        p.add(lblemail);
-        emailtxt=new JTextField();
-        emailtxt.setBounds(210,160,150,30);
-        p.add(emailtxt);
+        lblmeterlocation=new JLabel("Meter Location");
+        lblmeterlocation.setBounds(100,160,100,30);
+        p.add(lblmeterlocation);
 
-        lblcity=new JLabel("City");
-        lblcity.setBounds(100,200,100,30);
-        p.add(lblcity);
-        citytxt=new JTextField();
-        citytxt.setBounds(210,200,150,30);
-        p.add(citytxt);
+        meterlocation=new Choice();
+        meterlocation.setBounds(210,160,150,30);
+        meterlocation.add("Inside");
+        meterlocation.add("Outside");
+        p.add(meterlocation);
 
-        lblphone=new JLabel("Phone No");
-        lblphone.setBounds(100,240,100,30);
-        p.add(lblphone);
-        phonetxt=new JTextField();
-        phonetxt.setBounds(210,240,150,30);
-        p.add(phonetxt);
 
-        next=new Button("Next");
-        next.setBounds(140,290,100,40);
-//        next.addActionListener(this);
-        p.add(next);
+        lblmetertype=new JLabel("Meter Type");
+        lblmetertype.setBounds(100,200,100,30);
+        p.add(lblmetertype);
 
-        cancel=new Button("Cancel");
-        cancel.setBounds(260,290,100,40);
-//        cancel.addActionListener(this);
-        p.add(cancel);
+        meterType=new Choice();
+        meterType.setBounds(210,200,150,30);
+        meterType.add("Electric Meter");
+        meterType.add("Solar Meter");
+        meterType.add("Smart Meter");
+        p.add(meterType);
+
+
+        lblphaseCode=new JLabel("Phase Code");
+        lblphaseCode.setBounds(100,240,100,30);
+        p.add(lblphaseCode);
+
+        phaseType=new Choice();
+        phaseType.setBounds(210,240,150,30);
+        phaseType.add("011");
+        phaseType.add("022");
+        phaseType.add("033");
+        phaseType.add("044");
+        phaseType.add("055");
+        phaseType.add("066");
+        phaseType.add("077");
+        phaseType.add("088");
+        phaseType.add("099");
+        p.add(phaseType);
+
+        lblbillType=new JLabel("Phase Type");
+        lblbillType.setBounds(100,280,100,30);
+        p.add(lblbillType);
+
+        billType=new Choice();
+        billType.setBounds(210,280,150,30);
+        billType.add("Normal");
+        billType.add("Industrial");
+        p.add(billType);
+
+
+
+
+        submit=new Button("Next");
+        submit.setBounds(140,320,100,40);
+        submit.addActionListener(this);
+        p.add(submit);
+
+
 
         setVisible(true);
 
     }
+
+
+    public void actionPerformed(ActionEvent ae)
+    {
+        if (ae.getSource()==submit)
+        {
+            String meterNo=lblMeter2.getText();
+            String meterLoc=meterlocation.getSelectedItem();
+          String billtype=billType.getSelectedItem();
+          String phasecode=phaseType.getSelectedItem();
+          String metertype=meterType.getSelectedItem();
+
+            String query1="insert into meterinfo values('"+meterNo+"','"+meterLoc+"','"+metertype+"','"+phasecode+"','"+billtype+"') ";
+
+            try{
+                Conn c=new Conn();
+                c.s.executeUpdate(query1);
+                JOptionPane.showMessageDialog(null,"Meter Info Added Successfully");
+                setVisible(false);
+
+
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
     public static void main(String[] args) {
-        new MeterInfo();
+        new MeterInfo("");
     }
 }
-

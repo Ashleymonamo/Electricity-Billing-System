@@ -48,7 +48,7 @@ public class NewCustomer extends JFrame implements ActionListener {
         lblMeter2.setText(""+Math.abs(number));
         p.add(lblMeter2);
 
-        lblemail=new JLabel("Email Adress");
+        lblemail=new JLabel("Email Address");
         lblemail.setBounds(100,160,100,30);
         p.add(lblemail);
         emailtxt=new JTextField();
@@ -71,7 +71,7 @@ public class NewCustomer extends JFrame implements ActionListener {
 
         next=new Button("Next");
         next.setBounds(140,290,100,40);
-//        next.addActionListener(this);
+        next.addActionListener(this);
         p.add(next);
 
         cancel=new Button("Cancel");
@@ -87,14 +87,14 @@ public class NewCustomer extends JFrame implements ActionListener {
         if (ae.getSource()==next)
         {
             String meterNo=lblMeter2.getText();
-            String emailAdress=emailtxt.getText();
+            String emailAddress=emailtxt.getText();
             String Name=nametxt.getText();
             String phoneNo=phonetxt.getText();
             String city=citytxt.getText();
-            String query1="insert into customer values('"+meterNo+"','"+Name+"','"+emailAdress+"','"+city+"','"+phoneNo+"')";
-            String query2="insert into login values('"+meterNo+"','','','"+Name+"','',)";
-            setVisible(false);
-            new MeterInfo();
+            String query1="insert into newcustomer values('"+meterNo+"','"+Name+"','"+emailAddress+"','"+city+"','"+phoneNo+"')";
+            String query2="insert into login values('"+meterNo+"','','"+emailAddress+"','"+Name+"','')";
+
+
 
 try{
    Conn c=new Conn();
@@ -102,7 +102,7 @@ try{
     c.s.executeUpdate(query2);
     JOptionPane.showMessageDialog(null,"Customer Details Added Successfully");
     setVisible(false);
-    new MeterInfo();
+    new MeterInfo(meterNo);
 }
 catch (Exception e)
 {

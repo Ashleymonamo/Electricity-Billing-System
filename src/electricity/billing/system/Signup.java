@@ -6,10 +6,11 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.*;
+import java.sql.*;
 
 public class Signup extends JFrame implements ActionListener {
     JLabel lblpassword,lbluserName,heading,lblmeterNo,lblName;
-    JTextField username,passwrd,meterNo,name;
+    JTextField email,passwrd,meterNo,name;
     Choice accType;
     JPanel panel;
     JButton create,back;
@@ -46,13 +47,13 @@ public class Signup extends JFrame implements ActionListener {
         meterNo.setBounds(170,140,140,30);
         panel.add(meterNo);
 
-        lbluserName=new JLabel("Username");
+        lbluserName=new JLabel("Email");
         lbluserName.setBounds(50,180,140,30);
         panel.add(lbluserName);
 
-        username=new JTextField();
-        username.setBounds(170,180,140,30);
-        panel.add(username);
+        email=new JTextField();
+        email.setBounds(170,180,140,30);
+        panel.add(email);
 
         lblName=new JLabel("Name");
         lblName.setBounds(50,220,140,30);
@@ -72,6 +73,7 @@ public class Signup extends JFrame implements ActionListener {
 
         create=new JButton("Create");
         create.setBounds(90,300,90,40);
+        create.addActionListener(this);
         panel.add(create);
 
         back=new JButton("Back");
@@ -85,14 +87,14 @@ public class Signup extends JFrame implements ActionListener {
          if(ae.getSource()==create)
         {
             String accountType= accType.getSelectedItem();
-            String Username=username.getText();
+            String emailAdd=email.getText();
             String Name=name.getText();
             String meterNum=meterNo.getText();
             String Password=passwrd.getText();
 
             try{
                Conn c=new Conn();
-                String query="insert into signup values('"+meterNum+"','"+Username+"','"+Password+"','"+Name+"','"+accountType+"')";
+                String query="insert into login values('"+meterNum+"','"+accountType+"','"+emailAdd+"','"+Name+"','"+Password+"')";
                 c.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null,"Account Created Successfully");
                 setVisible(false);
@@ -100,6 +102,8 @@ public class Signup extends JFrame implements ActionListener {
             }
           catch (Exception e)
            {
+
+               //System.out.println("Couldnt create account");
                e.printStackTrace();
            }
 
