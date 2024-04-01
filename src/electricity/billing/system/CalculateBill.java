@@ -182,8 +182,8 @@ public class CalculateBill extends JFrame implements ActionListener {
                 c.s.executeUpdate(query1);
 
                 JOptionPane.showMessageDialog(null,"Customer Bill Updated Successfully");
-                setVisible(false);
-                new Project();
+//                setVisible(false);
+//                new Project();
             }
             catch (Exception e)
             {
@@ -194,7 +194,7 @@ public class CalculateBill extends JFrame implements ActionListener {
         else if (ae.getSource()==cancel)
         {
             setVisible(false);
-            new Project();
+            //new Project();
         }
     }
     public static void main(String[] args) {

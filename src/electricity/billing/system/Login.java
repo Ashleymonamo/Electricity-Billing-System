@@ -137,14 +137,15 @@ public void actionPerfomed(ActionEvent ae)
                 Conn c= new Conn();
                 String query="select * from login where email= '"+emailAdress+"'and password='"+passsWord+"' and accType='"+accountType+"'";
                 ResultSet rs= c.s.executeQuery(query);
+
                 if(rs.next())
-                {
+                {String meter=rs.getString("meterNo");
                     setVisible(false);
-                    new Project();
+                    new Project(accountType,meter);
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null,"Invalid Login Credentials");
+                    JOptionPane.showMessageDialog(null, "Invalid Login Credentials");
                     setVisible(false);
                     new Login();
 

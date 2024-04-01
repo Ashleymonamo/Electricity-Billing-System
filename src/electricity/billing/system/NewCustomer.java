@@ -113,7 +113,7 @@ catch (Exception e)
     else if (ae.getSource()==cancel)
     {
         setVisible(false);
-        new Project();
+        //new Project();
     }
     }
     public static void main(String[] args) {

@@ -12,8 +12,11 @@ public class Project extends JFrame implements ActionListener {
     //TABS
     JMenu master,information,user,report,utility,exit;
     //Power station
-    Project()
+String userAcc,meter;
+    Project(String userAcc,String meter)
     {
+        this.userAcc=userAcc;
+        this.meter=meter;
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         ImageIcon i1=new ImageIcon(ClassLoader.getSystemResource("icons/power-station.jpg"));
@@ -28,7 +31,7 @@ public class Project extends JFrame implements ActionListener {
 
         master=new JMenu("Master");
         master.setForeground(Color.BLUE);
-        mb.add(master);
+
 
         JMenuItem newcustomer=new JMenuItem("New Customer");
         newcustomer.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -85,7 +88,6 @@ public class Project extends JFrame implements ActionListener {
         //SECOND TAB
         information=new JMenu("Information");
         information.setForeground(Color.BLUE);
-        mb.add(information);
 
 
         JMenuItem updateInfo=new JMenuItem("Update Information");
@@ -116,7 +118,7 @@ public class Project extends JFrame implements ActionListener {
         //  3RD TAB
         user=new JMenu("User");
         user.setForeground(Color.BLUE);
-        mb.add(user);
+
 
 
         JMenuItem paybill=new JMenuItem("Pay Bill");
@@ -147,7 +149,7 @@ public class Project extends JFrame implements ActionListener {
 //4th tab
         report=new JMenu("Report");
         report.setForeground(Color.BLUE);
-        mb.add(report);
+
 
         JMenuItem generatebill=new JMenuItem("Generate Bill");
         generatebill.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -164,7 +166,7 @@ public class Project extends JFrame implements ActionListener {
 
         utility=new JMenu("Notepad");
         utility.setForeground(Color.BLUE);
-        mb.add(utility);
+
 
         JMenuItem notepad=new JMenuItem("Notepad");
         notepad.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -195,7 +197,7 @@ public class Project extends JFrame implements ActionListener {
 
         exit=new JMenu("Exit");
         exit.setForeground(Color.BLUE);
-        mb.add(exit);
+
 
         JMenuItem exit1=new JMenuItem("Exit");
         exit1.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -207,7 +209,25 @@ public class Project extends JFrame implements ActionListener {
         //SETS shortcuts
         exit1.setMnemonic('X');
         exit1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,ActionEvent.CTRL_MASK));
+
         exit.add(exit1);
+
+
+
+        if(userAcc.equals("Admin"))
+        {
+            mb.add(master);
+
+        }
+       else {
+            mb.add(information);
+            mb.add(report);
+
+            mb.add(user);
+        }
+        mb.add(utility);
+        mb.add(exit);
+
 
         setLayout(new FlowLayout());
         setVisible(true);
@@ -221,22 +241,65 @@ public void actionPerformed(ActionEvent ae)
     if(msg.equals("New Customer"))
     {
         new NewCustomer();
+    }
+     else if (msg.equals("Calculate Bill"))
+    {
+      new CalculateBill();
+    }
+     else if(msg.equals("Deposit Details"))
+     {
+         new DepositDetails();
+     }
+     else if(msg.equals("Customer Details"))
+     {
+         new CustomerDetails();
+     }
+    else if(msg.equals("View Information"))
+    {
+        new ViewInfo(meter);
+    }
+    else if(msg.equals("Update Information"))
+    {
+        new UpdateInfo(meter);
+    } else if (msg.equals("Bill Details")) {
+        new BillDetails(meter);
+
+    }else if (msg.equals("Notepad"))
+    {
+        try
+        {
+             Runtime.getRuntime().exec("notepad.exe");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }else if (msg.equals("Calculator"))
+    {
+        try
+        {
+            Runtime.getRuntime().exec("calc.exe");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    else if (msg.equals("Pay Bill"))
+    {
+        new PayBill();
 
     }
-     if (msg.equals("Calculate Bill"))
+    else if (msg.equals("Generate Bill"))
     {
-new CalculateBill();
-
-
-    }else if (msg.equals("Exit"))
+        new GenerateBill();
+    }
+    else if (msg.equals("Exit"))
 {
     setVisible(false);
-
-
+    new Login();
 }
 }
 
     public static void main(String[] args) {
-        new Project();
+        new Project("","");
     }
 }

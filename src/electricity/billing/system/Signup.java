@@ -41,10 +41,12 @@ public class Signup extends JFrame implements ActionListener {
 
         lblmeterNo=new JLabel("Meter No");
         lblmeterNo.setBounds(50,140,140,30);
+        lblmeterNo.setVisible(false);
         panel.add(lblmeterNo);
 
         meterNo=new JTextField();
         meterNo.setBounds(170,140,140,30);
+        meterNo.setVisible(false);
         panel.add(meterNo);
 
         lbluserName=new JLabel("Email");
@@ -63,6 +65,32 @@ public class Signup extends JFrame implements ActionListener {
         name.setBounds(170,220,140,30);
         panel.add(name);
 
+        meterNo.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try
+                {
+                    Conn c=new Conn();
+                    ResultSet rs=c.s.executeQuery("select * from login where meterNo= '"+meterNo.getText()+"'");
+                    while(rs.next())
+                    {
+                        //returns the name from database(get data from database)
+                      name.setText(rs.getString("Name"));
+                    }
+                }
+                catch(Exception ec)
+                {
+                    ec.printStackTrace();
+                }
+            }
+        });
+
+
         lblpassword=new JLabel("Password");
         lblpassword.setBounds(50,260,140,30);
         panel.add(lblpassword);
@@ -70,6 +98,27 @@ public class Signup extends JFrame implements ActionListener {
         passwrd=new JTextField();
         passwrd.setBounds(170,260,140,30);
         panel.add(passwrd);
+
+//if AccountType is Admin, the meterNo textfield will be hidden
+        accType.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+             String user=accType.getSelectedItem();
+             if(user.equals("Customer"))
+             {
+                    lblmeterNo.setVisible(true);
+                    meterNo.setVisible(true);
+                    name.setEditable(false);
+             }
+             else if(user.equals("Admin"))
+             {
+                 lblmeterNo.setVisible(false);
+                 meterNo.setVisible(false);
+                 name.setEditable(true);
+             }
+             }
+
+        });
 
         create=new JButton("Create");
         create.setBounds(90,300,90,40);
@@ -94,8 +143,16 @@ public class Signup extends JFrame implements ActionListener {
 
             try{
                Conn c=new Conn();
-                String query="insert into login values('"+meterNum+"','"+accountType+"','"+emailAdd+"','"+Name+"','"+Password+"')";
-                c.s.executeUpdate(query);
+                String query=null;
+                if (accountType.equals("Admin"))
+                {
+                  query= "insert into login values('"+meterNum+"','"+accountType+"','"+emailAdd+"','"+Name+"','"+Password+"')";
+
+                }
+                else {
+                    query="update login set email= '"+emailAdd+"',password='"+Password+"',AccType= '"+accountType+"' where meterNo='"+meterNum+"'";
+                }
+                        c.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null,"Account Created Successfully");
                 setVisible(false);
                  new Login();
