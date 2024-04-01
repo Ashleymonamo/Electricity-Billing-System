@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 import java.sql.*;
 
-//import net.proteanit.sql.DbUtils;
+ import net.proteanit.sql.DbUtils;
 public class DepositDetails extends JFrame implements ActionListener  {
 
     JLabel lblmeterno,lblmonth;
@@ -64,7 +64,7 @@ try
 {
     Conn c = new Conn();
     ResultSet rs1 = c.s.executeQuery("select * from bill");
-//table.setModel(DbUtils.resultSetToTableModel(rs1));
+ table.setModel(DbUtils.resultSetToTableModel(rs1));
 
 }catch (Exception e)
 {
@@ -95,7 +95,7 @@ sp.setBounds( 0,100,700,600);
           {
             Conn c=new Conn();
             ResultSet rs2=c.s.executeQuery(query);
-           // table.setModel(DbUtils.resultSetToTable(rs2));
+            table.setModel(DbUtils.resultSetToTableModel(rs2));
           }catch(Exception e)
           {
               e.printStackTrace();

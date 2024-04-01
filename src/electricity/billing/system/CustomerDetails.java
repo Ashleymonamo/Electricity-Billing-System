@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 import java.sql.*;
 
-//import net.proteanit.sql.DbUtils;
+import net.proteanit.sql.DbUtils;
 public class CustomerDetails extends JFrame implements ActionListener  {
 
 
@@ -25,7 +25,7 @@ public class CustomerDetails extends JFrame implements ActionListener  {
         {
             Conn c = new Conn();
             ResultSet rs1 = c.s.executeQuery("select * from newcustomer");
-//table.setModel(DbUtils.resultSetToTableModel(rs1));
+ table.setModel(DbUtils.resultSetToTableModel(rs1));
 
         }catch (Exception e)
         {

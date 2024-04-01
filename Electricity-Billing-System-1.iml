@@ -8,13 +8,16 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-         <library>
-           <CLASSES>
-             <root url="jar://$USER_HOME$/Downloads/mysql-connector-j-8.0.32.jar!/" />
-           </CLASSES>
-           <JAVADOC />
-           <SOURCES />
-         </library>
-       </orderEntry>
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/mysql-connector-j-8.0.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="github.ulwx.aka.dbutils.spring.boot.starter" level="project" />
+    <orderEntry type="library" name="github.zhengframework.zheng.jdbc.commons.dbutils" level="project" />
+    <orderEntry type="library" name="rs2xml" level="project" />
   </component>
 </module>
