@@ -17,7 +17,7 @@ public class DepositDetails extends JFrame implements ActionListener  {
     {
         super("Deposit Details");
 
-        setSize(550,  550);
+        setSize(750,  550);
         setLocation(300,70);
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
@@ -72,6 +72,7 @@ try
 }
 JScrollPane sp=new JScrollPane(table);
 sp.setBounds( 0,100,700,600);
+add(sp);
 
         search=new JButton("Search");
         search.setBounds(90,70,100,20);

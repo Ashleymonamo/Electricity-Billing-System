@@ -3,8 +3,8 @@ package electricity.billing.system;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.ResultSet;
-import javax.sql.*;
+import java.sql.*;
+
 
 public class Login extends JFrame implements ActionListener{
     JLabel lblpassword,lblloginOpt,lbluserName;

@@ -132,36 +132,36 @@ String userAcc,meter;
         paybill.setMnemonic('P');
         paybill.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
         user.add(paybill);
-
-        JMenuItem billdetails=new JMenuItem("Bill Details");
-        billdetails.setFont(new Font("monospaced",Font.PLAIN,12));
-        billdetails.setBackground(Color.WHITE);
-        ImageIcon icon8=new ImageIcon(ClassLoader.getSystemResource("icons/bill.png"));
-        Image image8=icon8.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
-        billdetails.setIcon((new ImageIcon(image8)));
-        billdetails.addActionListener(this);
-        //SETS shortcuts
-        billdetails.setMnemonic('C');
-        billdetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,ActionEvent.CTRL_MASK));
-        user.add(billdetails);
+//
+//        JMenuItem billdetails=new JMenuItem("Bill Details");
+//        billdetails.setFont(new Font("monospaced",Font.PLAIN,12));
+//        billdetails.setBackground(Color.WHITE);
+//        ImageIcon icon8=new ImageIcon(ClassLoader.getSystemResource("icons/bill.png"));
+//        Image image8=icon8.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
+//        billdetails.setIcon((new ImageIcon(image8)));
+//        billdetails.addActionListener(this);
+//        //SETS shortcuts
+//        billdetails.setMnemonic('C');
+//        billdetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,ActionEvent.CTRL_MASK));
+//        user.add(billdetails);
 
 
 //4th tab
-        report=new JMenu("Report");
-        report.setForeground(Color.BLUE);
-
-
-        JMenuItem generatebill=new JMenuItem("Generate Bill");
-        generatebill.setFont(new Font("monospaced",Font.PLAIN,12));
-        generatebill.setBackground(Color.WHITE);
-        ImageIcon icon9=new ImageIcon(ClassLoader.getSystemResource("icons/generate.png"));
-        Image image9=icon9.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
-        generatebill.setIcon((new ImageIcon(image9)));
-        generatebill.addActionListener(this);
-        //SETS shortcuts
-        generatebill.setMnemonic('R');
-        generatebill.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G,ActionEvent.CTRL_MASK));
-        report.add(generatebill);
+//        report=new JMenu("Report");
+//        report.setForeground(Color.BLUE);
+//
+//
+//        JMenuItem generatebill=new JMenuItem("Generate Bill");
+//        generatebill.setFont(new Font("monospaced",Font.PLAIN,12));
+//        generatebill.setBackground(Color.WHITE);
+//        ImageIcon icon9=new ImageIcon(ClassLoader.getSystemResource("icons/generate.png"));
+//        Image image9=icon9.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
+//        generatebill.setIcon((new ImageIcon(image9)));
+//        generatebill.addActionListener(this);
+//        //SETS shortcuts
+//        generatebill.setMnemonic('R');
+//        generatebill.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G,ActionEvent.CTRL_MASK));
+//        report.add(generatebill);
 
 
         utility=new JMenu("Notepad");
@@ -221,7 +221,7 @@ String userAcc,meter;
         }
        else {
             mb.add(information);
-            mb.add(report);
+//            mb.add(report);
 
             mb.add(user);
         }
@@ -261,10 +261,12 @@ public void actionPerformed(ActionEvent ae)
     else if(msg.equals("Update Information"))
     {
         new UpdateInfo(meter);
-    } else if (msg.equals("Bill Details")) {
-        new BillDetails(meter);
-
-    }else if (msg.equals("Notepad"))
+    }
+//    else if (msg.equals("Bill Details")) {
+//        new BillDetails(meter);
+//
+//    }
+    else if (msg.equals("Notepad"))
     {
         try
         {
@@ -285,13 +287,13 @@ public void actionPerformed(ActionEvent ae)
     }
     else if (msg.equals("Pay Bill"))
     {
-        new PayBill();
+        new PayBill(meter,userAcc);
 
     }
-    else if (msg.equals("Generate Bill"))
-    {
-        new GenerateBill();
-    }
+//    else if (msg.equals("Generate Bill"))
+//    {
+//        new GenerateBill(meter);
+// }
     else if (msg.equals("Exit"))
 {
     setVisible(false);

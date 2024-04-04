@@ -41,7 +41,7 @@ Thread t;
     @java.lang.Override
     public void run() {
         try{
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             setVisible(false);
             new Login();
         }catch(Exception e)

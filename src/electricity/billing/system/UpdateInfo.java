@@ -104,7 +104,7 @@ setVisible(true);
            try
            {
                Conn c=new Conn();
-               c.s.executeUpdate("update newcustomer set email='"+emailAdd+"',city='"+City+"',phone='"+phoneNum+"'");
+               c.s.executeUpdate("update newcustomer set email='"+emailAdd+"',city='"+City+"',phone='"+phoneNum+"' where meterNo='"+meter+"'");
                JOptionPane.showMessageDialog(null,"Information Updated Successfully");
                setVisible(false);
            }

@@ -14,9 +14,9 @@ import java.util.*;
 
 
 public class CalculateBill extends JFrame implements ActionListener {
-    JLabel lblname,lblMeter,lblunits,lblmonth,lblAddress,name,adress;
+    JLabel lblname,lblMeter,lblunits,lblmonth,lblAddress,name,adress,lblstatus;
     JTextField unitstxt;
-    Choice monthtxt,meterno;
+    Choice monthtxt,meterno,statustxt;
     Button cancel,submit;
     CalculateBill() {
         setSize(550, 550);
@@ -126,13 +126,22 @@ public class CalculateBill extends JFrame implements ActionListener {
         monthtxt.add("Dec");
         p.add(monthtxt);
 
+        lblstatus=new JLabel("Status");
+        lblstatus.setBounds(100,280,100,30);
+        p.add(lblstatus);
+        statustxt=new Choice();
+        statustxt.setBounds(210,280,150,30);
+        statustxt.add("Unpaid");
+        statustxt.add("Paid");
+        p.add(statustxt);
+
         submit=new Button("Next");
-        submit.setBounds(140,290,100,40);
+        submit.setBounds(140,330,100,40);
         submit.addActionListener(this);
         p.add(submit);
 
         cancel=new Button("Cancel");
-        cancel.setBounds(260,290,100,40);
+        cancel.setBounds(260,330,100,40);
         cancel.addActionListener(this);
         p.add(cancel);
 
@@ -146,6 +155,7 @@ public class CalculateBill extends JFrame implements ActionListener {
             String meterNo=meterno.getSelectedItem();
             String units=unitstxt.getText();
             String month=monthtxt.getSelectedItem();
+            String status=statustxt.getSelectedItem();
 
             int totalbill=0;
             int unit_consumed=Integer.parseInt(units);
@@ -173,7 +183,7 @@ public class CalculateBill extends JFrame implements ActionListener {
                  e.printStackTrace();
              }
 
-            String query1="insert into bill values('"+meterNo+"','"+month+"','"+units+"','"+totalbill+"')";
+            String query1="insert into bill values('"+meterNo+"','"+month+"','"+units+"','"+totalbill+"','"+status+"')";
            // String query2="insert into login values('"+meterNo+"','','','"+Name+"','',)";
 
 
@@ -182,7 +192,7 @@ public class CalculateBill extends JFrame implements ActionListener {
                 c.s.executeUpdate(query1);
 
                 JOptionPane.showMessageDialog(null,"Customer Bill Updated Successfully");
-//                setVisible(false);
+              setVisible(false);
 //                new Project();
             }
             catch (Exception e)

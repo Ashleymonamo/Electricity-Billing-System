@@ -1,7 +1,7 @@
 package electricity.billing.system;
 
 import javax.swing.*;
-import java.awt.*;
+
 import java.awt.event.*;
 
 import java.sql.*;
@@ -11,7 +11,7 @@ public class CustomerDetails extends JFrame implements ActionListener  {
 
 
     JTable table;
-    JButton search,print;
+    JButton print;
     CustomerDetails()
     {
         super("Customer Details");
